@@ -11,14 +11,37 @@ rm(list = ls())
 # Load in packages
 library(tidyverse)
 library(lubridate)
+library(gghighlight)
 
 # Read in the data
 QBData <- readRDS('./Data/AllYearsQBData.rds')
 ```
 
 ```{r}
+# Isolate Jameis' 2019 Seasons
+Jameis <-
+  QBData %>%
+  filter(Player == 'Jameis Winston' & Year == 2019)
+
+
 ggplot(QBData, aes(x = TD, y = Int)) +
   geom_jitter(position=position_jitter(h=0.1, w=0.1), alpha = 0.4) +
+  labs(title = "TDs vs Interceptions by Quaterbacks from 1970-2019",
+             subtitle = 'Top rated QB for every team for each year (e.g. in 2019 only Dree Brees and not Terry Bridgewater', 
+       caption = 'Data from: nfl.com/stats',
+       y = 'Interceptions',
+       x = 'Passing Touchdowns') +
+  theme_minimal() +
+  geom_point(data = Jameis, aes(x = TD, y = Int), color = 'red', size = 3) +
+  geom_text(data = Jameis, aes(label=Player),hjust=-0.3,vjust=-1) 
+```
+
+
+Who were the other top Int/TD players? 
+```{r}
+# Testing out gghighlight_point
+gghighlight_point(QBData, aes(x = TD, y = Int), 
+                  predicate = c(TD >= 50 | Int >= 30), label = Player) +
   labs(title = "TDs vs Interceptions by Quaterbacks from 1970-2019",
              subtitle = 'Top rated QB for every team for each year (e.g. in 2019 only Dree Brees and not Terry Bridgewater', 
        caption = 'Data from: nfl.com/stats',
