@@ -27,13 +27,29 @@ Jameis <-
 QBData <-
   QBData %>%
   filter(Player != 'Jameis Winston' & Year != 2019)
+```
 
-# Plot data
+Plot TD vs Ints
+```{r}
+# With a little bit of jitter
 ggplot(QBData, aes(x = TD, y = Int)) +
   geom_jitter(position=position_jitter(h=0.1, w=0.1), alpha = 0.3) +
   labs(title = "Passing TDs vs Interceptions by Quaterbacks from 1970-2019",
              subtitle = 'Top rated QB for every team for each year (e.g. in 2019 only Dree Brees and not Terry Bridgewater)', 
-       caption = 'Data from: nfl.com/stats',
+       caption = 'Regular Season only | Data from: nfl.com/stats',
+       y = 'Interceptions',
+       x = 'Passing Touchdowns') +
+  theme_minimal() +
+  geom_point(data = Jameis, aes(x = TD, y = Int), color = 'red', size = 2) +
+  geom_text(data = Jameis, aes(label=Player),hjust=-0.1,vjust=-0.5) 
+
+
+# With no jitter
+ggplot(QBData, aes(x = TD, y = Int)) +
+  geom_point(alpha = 0.2) +
+  labs(title = "Passing TDs vs Interceptions by Quaterbacks from 1970-2019",
+             subtitle = 'Top rated QB for every team for each year (e.g. in 2019 only Dree Brees and not Terry Bridgewater)', 
+       caption = 'Regular Season only | Data from: nfl.com/stats',
        y = 'Interceptions',
        x = 'Passing Touchdowns') +
   theme_minimal() +
@@ -49,8 +65,35 @@ gghighlight_point(QBData, aes(x = TD, y = Int),
                   predicate = c(TD >= 50 | Int >= 30), label = Player) +
   labs(title = "TDs vs Interceptions by Quaterbacks from 1970-2019",
              subtitle = 'Top rated QB for every team for each year (e.g. in 2019 only Dree Brees and not Terry Bridgewater', 
-       caption = 'Data from: nfl.com/stats',
+       caption = 'Regular Season Only | Data from: nfl.com/stats',
        y = 'Interceptions',
        x = 'Passing Touchdowns') +
   theme_minimal()
+```
+
+
+Plotting passing yards vs interceptions. 
+```{r}
+ggplot(QBData, aes(x = Yds, y = Int)) +
+  geom_point(alpha = 0.3) +
+  labs(title = "Passing Yards vs Interceptions by Quaterbacks from 1970-2019",
+             subtitle = 'Top rated QB for every team for each year (e.g. in 2019 only Dree Brees and not Terry Bridgewater)', 
+       caption = 'Regular Season Only | Data from: nfl.com/stats',
+       y = 'Interceptions',
+       x = 'Passing Yards') +
+  theme_minimal() +
+  geom_point(data = Jameis, aes(x = Yds, y = Int), color = 'red', size = 2) +
+  geom_text(data = Jameis, aes(label=Player),hjust=0.3,vjust=-1.2) 
+```
+
+Who were the other unique players?
+```{r}
+gghighlight_point(QBData, aes(x = Yds, y = Int), 
+                  predicate = c(Yds >= 5400 | Int >= 30), label = Player) +
+  labs(title = "Passing Yards vs Interceptions by Quaterbacks from 1970-2019",
+             subtitle = 'Top rated QB for every team for each year (e.g. in 2019 only Dree Brees and not Terry Bridgewater)', 
+       caption = 'Regular Season Only | Data from: nfl.com/stats',
+       y = 'Interceptions',
+       x = 'Passing Yards') +
+  theme_minimal() 
 ```
