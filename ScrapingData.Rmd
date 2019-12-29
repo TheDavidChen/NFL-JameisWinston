@@ -5,26 +5,92 @@ date: "12/29/2019"
 output: html_document
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+Note: This process will most likely break when the 2020 season starts. If you still want to use this code, change the following:  
+
++ Line 30 - change the year to your current year  
++ Line 34 - Change the link to the current season  
++ Line 56 - Change the end year to the previous season (2019 if you are in 2020)  
+
+That should be the only necessary changes. Feel free to send me a message if more issues come up. 
+
+
+```{r message = FALSE}
+# Clean up R environment
+rm(list = ls())
+
+# Load in packages
+library(tidyverse)
+library(rvest)
 ```
 
-## R Markdown
+Scrape the 2019 Data. 
+```{r}
+# Change this year if you are processing year 2020+
+# This variable indicates year for this dataset
+year <- 2019
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+# Change this link to the new season if desired
+# Scrape the 2019 Data
+NFL_link <- 'http://www.nfl.com/stats/categorystats?tabSeq=1&statisticPositionCategory=QUARTERBACK&qualified=true&season=2019&seasonType=REG'
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+NFL <- read_html(NFL_link)
 
-```{r cars}
-summary(cars)
+# Scrape the data
+Raw_table <-
+  NFL_link %>%
+  read_html() %>%
+  html_nodes('table') %>%
+  html_table(fill = T)
+
+
+# Create the table that we will attach all the other years to
+Full_Table <- 
+  Raw_table[[1]] %>%
+  distinct(Team, .keep_all = T) %>% # Keep only the top QB for every team
+  mutate(Year = year)
 ```
 
-## Including Plots
+Scrape the data from 1970-2018
+```{r}
+# Scrape years 1970-2018. Update the years if desired.
+for (year in 1970:2018) {
+  
+  # Create the link to the stats for the year
+  NFL_link <- paste0('http://www.nfl.com/stats/categorystats?archive=true&conference=null&statisticPositionCategory=QUARTERBACK&season=', year, '&seasonType=REG&experience=&tabSeq=1&qualified=true&Submit=Go')
+  
+  # Scrape the table
+  Raw_table <-
+    NFL_link %>%
+    read_html() %>%
+    html_nodes('table') %>%
+    html_table(fill = T)
 
-You can also embed plots, for example:
+  # Extract the table and add a variable indicating the year
+  Yearly_Table <- 
+    Raw_table[[1]] %>%
+    distinct(Team, .keep_all = T) %>% # Keep only the top QB for every team
+    mutate(Year = year)
 
-```{r pressure, echo=FALSE}
-plot(pressure)
+  # Attach all the data to the full table
+  Full_Table <- rbind(Full_Table, Yearly_Table)
+    
+}
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+```{r}
+# Sort the data before exporting
+Full_Table <-
+  Full_Table %>%
+  arrange(desc(Year))
+```
+
+Export the data. 
+```{r}
+# Save as an RDS (for loading the data easier in R)
+saveRDS(Full_Table, file = "./Data/AllYearsQBData.rds")
+
+# Save as a csv (for anybody else that wants to use the data)
+write.csv(Full_Table, file = "./Data/AllYearsQBData.csv")
+```
+
+
