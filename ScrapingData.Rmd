@@ -78,10 +78,11 @@ for (year in 1970:2018) {
 ```
 
 ```{r}
-# Sort the data before exporting
+# Sort and format the data before exporting
 Full_Table <-
   Full_Table %>%
-  arrange(desc(Year))
+  arrange(desc(Year)) %>%
+  mutate(Yds = as.numeric(gsub(",", "", Yds)))
 ```
 
 Export the data. 
