@@ -4,27 +4,25 @@ author: "David Chen"
 date: "12/29/2019"
 output: html_document
 ---
+```{r message = FALSE}
+# Clean up R environment
+rm(list = ls())
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+# Load in packages
+library(tidyverse)
+library(lubridate)
+
+# Read in the data
+QBData <- readRDS('./Data/AllYearsQBData.rds')
 ```
 
-## R Markdown
-
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
-
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
-
-```{r cars}
-summary(cars)
+```{r}
+ggplot(QBData, aes(x = TD, y = Int)) +
+  geom_jitter(position=position_jitter(h=0.1, w=0.1), alpha = 0.4) +
+  labs(title = "TDs vs Interceptions by Quaterbacks from 1970-2019",
+             subtitle = 'Top rated QB for every team for each year (e.g. in 2019 only Dree Brees and not Terry Bridgewater', 
+       caption = 'Data from: nfl.com/stats',
+       y = 'Interceptions',
+       x = 'Passing Touchdowns') +
+  theme_minimal()
 ```
-
-## Including Plots
-
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
