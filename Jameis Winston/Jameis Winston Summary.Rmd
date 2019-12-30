@@ -21,6 +21,9 @@ The scraped data can be found in the 'Data' folder. When this code breaks in the
 
 ![](./JameisWinston_files/figure-gfm/Jameis Passing/Ints-1.png)
 
+
+
+
 # Passing Touchdowns vs Interceptions
 
 ![](./JameisWinston_files/figure-gfm/Jameis Winston TDS/Ints-1.png)
