@@ -72,7 +72,7 @@ ggplot(QBData, aes(x = Yds, y = Int)) +
        x = 'Passing Yards') +
   theme_minimal() +
   geom_point(data = Jameis, aes(x = Yds, y = Int), color = 'red', size = 2) +
-  geom_text(data = Jameis, aes(label=Player),hjust=0.4,vjust=-1) 
+  geom_text(data = Jameis, aes(label=Player),hjust=0.46,vjust=-1.05) 
 ```
 
 ![](JameisWinston_files/figure-gfm/Jameis%20Passing/Ints-1.png)<!-- -->
