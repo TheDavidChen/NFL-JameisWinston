@@ -32,7 +32,7 @@ code can be easily adjusted.
 
 # Passing Yards vs Interceptions
 
-![ ](./Jameis Winston/JameisWinston_files/figure-gfm/Jameis Passing/Ints-1.png)
+![ ](Jameis Winston\JameisWinston_files\figure-gfm\Jameis Passing\Ints-1.png)
 
 
 # Passing Touchdowns vs Interceptions
