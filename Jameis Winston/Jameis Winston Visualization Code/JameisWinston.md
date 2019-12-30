@@ -17,7 +17,7 @@ library(gghighlight)
 
 ``` r
 # Read in the data
-QBData <- readRDS('./Data/AllYearsQBData.rds')
+QBData <- readRDS('../../Data/AllYearsQBData.rds')
 ```
 
 ``` r
@@ -25,11 +25,6 @@ QBData <- readRDS('./Data/AllYearsQBData.rds')
 Jameis <-
   QBData %>%
   filter(Player == 'Jameis Winston' & Year == 2019)
-
-# Remove Jameis' 2019 season from the primary dataset
-QBData <-
-  QBData %>%
-  filter(Player != 'Jameis Winston' & Year != 2019)
 ```
 
 Plot TD vs Ints
