@@ -2,7 +2,8 @@
 title: "JameisWinston"
 author: "David Chen"
 date: "12/29/2019"
-output: html_document
+#output: html_document
+output: rmarkdown::github_document
 ---
 ```{r message = FALSE}
 # Clean up R environment
