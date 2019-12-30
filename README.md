@@ -32,12 +32,12 @@ code can be easily adjusted.
 
 # Passing Yards vs Interceptions
 
-![temp](Ints-1.png)
+![](TD_Ints.png)
 
 
 # Passing Touchdowns vs Interceptions
 
-![temp](figure-gfm/Jameis Winston TDS/Ints-1.png)
+![](Yds_Ints.png)
 
 From these figures, we can certainly see that it was a unique year.
 Whether or not it is sufficient to declare him an outlier is down to
