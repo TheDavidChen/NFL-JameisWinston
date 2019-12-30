@@ -31,21 +31,7 @@ QBData <-
 ```
 
 Plot TD vs Ints
-```{r}
-# With a little bit of jitter
-ggplot(QBData, aes(x = TD, y = Int)) +
-  geom_jitter(position=position_jitter(h=0.1, w=0.1), alpha = 0.3) +
-  labs(title = "Passing TDs vs Interceptions by Quaterbacks from 1970-2019",
-             subtitle = 'Top rated QB for every team for each year (e.g. Dree Brees instead of Teddy Bridgewater)', 
-       caption = 'Regular Season only | Data from: nfl.com/stats',
-       y = 'Interceptions',
-       x = 'Passing Touchdowns') +
-  theme_minimal() +
-  geom_point(data = Jameis, aes(x = TD, y = Int), color = 'red', size = 2) +
-  geom_text(data = Jameis, aes(label=Player),hjust=-0.1,vjust=-0.5) 
-
-
-# With no jitter
+```{r Jameis Winston TDs/Ints}
 ggplot(QBData, aes(x = TD, y = Int)) +
   geom_point(alpha = 0.2) +
   labs(title = "Passing TDs vs Interceptions by Quaterbacks from 1970-2019",
@@ -60,7 +46,7 @@ ggplot(QBData, aes(x = TD, y = Int)) +
 
 
 Who were the other top Int/TD players? 
-```{r}
+```{r Other QBs TDs/Ints}
 # Testing out gghighlight_point
 gghighlight_point(QBData, aes(x = TD, y = Int), 
                   predicate = c(TD >= 50 | Int >= 30), label = Player) +
@@ -74,7 +60,7 @@ gghighlight_point(QBData, aes(x = TD, y = Int),
 
 
 Plotting passing yards vs interceptions. 
-```{r}
+```{r Jameis Passing/Ints}
 ggplot(QBData, aes(x = Yds, y = Int)) +
   geom_point(alpha = 0.3) +
   labs(title = "Passing Yards vs Interceptions by Quaterbacks from 1970-2019",
@@ -88,7 +74,7 @@ ggplot(QBData, aes(x = Yds, y = Int)) +
 ```
 
 Who were the other unique players?
-```{r}
+```{r Other unique QBs Passing/Ints}
 gghighlight_point(QBData, aes(x = Yds, y = Int), 
                   predicate = c(Yds >= 5400 | Int >= 30), label = Player) +
   labs(title = "Passing Yards vs Interceptions by Quaterbacks from 1970-2019",

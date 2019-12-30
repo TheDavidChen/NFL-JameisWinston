@@ -35,23 +35,6 @@ QBData <-
 Plot TD vs Ints
 
 ``` r
-# With a little bit of jitter
-ggplot(QBData, aes(x = TD, y = Int)) +
-  geom_jitter(position=position_jitter(h=0.1, w=0.1), alpha = 0.3) +
-  labs(title = "Passing TDs vs Interceptions by Quaterbacks from 1970-2019",
-             subtitle = 'Top rated QB for every team for each year (e.g. Dree Brees instead of Teddy Bridgewater)', 
-       caption = 'Regular Season only | Data from: nfl.com/stats',
-       y = 'Interceptions',
-       x = 'Passing Touchdowns') +
-  theme_minimal() +
-  geom_point(data = Jameis, aes(x = TD, y = Int), color = 'red', size = 2) +
-  geom_text(data = Jameis, aes(label=Player),hjust=-0.1,vjust=-0.5) 
-```
-
-![](JameisWinston_files/figure-gfm/unnamed-chunk-3-1.png)<!-- -->
-
-``` r
-# With no jitter
 ggplot(QBData, aes(x = TD, y = Int)) +
   geom_point(alpha = 0.2) +
   labs(title = "Passing TDs vs Interceptions by Quaterbacks from 1970-2019",
@@ -64,7 +47,7 @@ ggplot(QBData, aes(x = TD, y = Int)) +
   geom_text(data = Jameis, aes(label=Player),hjust=-0.1,vjust=-0.5) 
 ```
 
-![](JameisWinston_files/figure-gfm/unnamed-chunk-3-2.png)<!-- -->
+![](JameisWinston_files/figure-gfm/Jameis%20Winston%20TDs/Ints-1.png)<!-- -->
 
 Who were the other top Int/TD players?
 
@@ -80,7 +63,7 @@ gghighlight_point(QBData, aes(x = TD, y = Int),
   theme_minimal()
 ```
 
-![](JameisWinston_files/figure-gfm/unnamed-chunk-4-1.png)<!-- -->
+![](JameisWinston_files/figure-gfm/Other%20QBs%20TDs/Ints-1.png)<!-- -->
 
 Plotting passing yards vs interceptions.
 
@@ -97,7 +80,7 @@ ggplot(QBData, aes(x = Yds, y = Int)) +
   geom_text(data = Jameis, aes(label=Player),hjust=0.4,vjust=-1) 
 ```
 
-![](JameisWinston_files/figure-gfm/unnamed-chunk-5-1.png)<!-- -->
+![](JameisWinston_files/figure-gfm/Jameis%20Passing/Ints-1.png)<!-- -->
 
 Who were the other unique players?
 
@@ -112,4 +95,4 @@ gghighlight_point(QBData, aes(x = Yds, y = Int),
   theme_minimal() 
 ```
 
-![](JameisWinston_files/figure-gfm/unnamed-chunk-6-1.png)<!-- -->
+![](JameisWinston_files/figure-gfm/Other%20unique%20QBs%20Passing/Ints-1.png)<!-- -->
