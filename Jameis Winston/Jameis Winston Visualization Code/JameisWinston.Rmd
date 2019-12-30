@@ -14,7 +14,9 @@ library(lubridate)
 library(gghighlight)
 
 # Read in the data
-QBData <- readRDS('NFLQuaterbacks/Data/AllYearsQBData.rds')
+QBData <- readRDS('./Data/AllYearsQBData.rds')
+
+getwd()
 
 ```
 
