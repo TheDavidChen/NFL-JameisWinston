@@ -2,7 +2,6 @@
 title: "JameisWinston"
 author: "David Chen"
 date: "12/29/2019"
-#output: html_document
 output: rmarkdown::github_document
 ---
 ```{r message = FALSE}
@@ -15,7 +14,8 @@ library(lubridate)
 library(gghighlight)
 
 # Read in the data
-QBData <- readRDS('./Data/AllYearsQBData.rds')
+QBData <- readRDS('NFLQuaterbacks/Data/AllYearsQBData.rds')
+
 ```
 
 ```{r}
