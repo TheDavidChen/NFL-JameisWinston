@@ -1,2 +1,2 @@
 # NFLQuaterbacks
-Visualizations of how unique Lamar Jackson and Jameis Winston are. 
+Visualizations of how unique Jameis Winston's 2019 NFL Season was. 
