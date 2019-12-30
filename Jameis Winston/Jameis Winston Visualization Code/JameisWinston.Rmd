@@ -36,12 +36,15 @@ ggplot(QBData, aes(x = TD, y = Int)) +
   theme_minimal() +
   geom_point(data = Jameis, aes(x = TD, y = Int), color = 'red', size = 2) +
   geom_text(data = Jameis, aes(label=Player),hjust=-0.1,vjust=-0.5) 
+
+# Save the images separately
+ggsave('../../TD_Ints.png')
 ```
 
 
 Who were the other top Int/TD players? 
 ```{r Other QBs TDs/Ints}
-# Testing out gghighlight_point
+# Highlight the other unique players
 gghighlight_point(QBData, aes(x = TD, y = Int), 
                   predicate = c(TD >= 50 | Int >= 30), label = Player) +
   labs(title = "TDs vs Interceptions by Quaterbacks from 1970-2019",
@@ -65,6 +68,9 @@ ggplot(QBData, aes(x = Yds, y = Int)) +
   theme_minimal() +
   geom_point(data = Jameis, aes(x = Yds, y = Int), color = 'red', size = 2) +
   geom_text(data = Jameis, aes(label=Player),hjust=0.46,vjust=-1.05) 
+
+# Save the images separately
+ggsave('../../Yds_Ints.png')
 ```
 
 Who were the other unique players?
