@@ -28,7 +28,7 @@ Plot TD vs Ints
 ```{r Jameis Winston TDs/Ints}
 ggplot(QBData, aes(x = TD, y = Int)) +
   geom_point(alpha = 0.2) +
-  labs(title = "Passing TDs vs Interceptions by Quaterbacks from 1970-2019",
+  labs(title = "Passing TDs vs Interceptions by Quarterbacks from 1970-2019",
              subtitle = 'Top rated QB for every team for each year (e.g. Dree Brees instead of Teddy Bridgewater)', 
        caption = 'Regular Season only | Data from: nfl.com/stats',
        y = 'Interceptions',
@@ -47,7 +47,7 @@ Who were the other top Int/TD players?
 # Highlight the other unique players
 gghighlight_point(QBData, aes(x = TD, y = Int), 
                   predicate = c(TD >= 50 | Int >= 30), label = Player) +
-  labs(title = "TDs vs Interceptions by Quaterbacks from 1970-2019",
+  labs(title = "TDs vs Interceptions by Quarterbacks from 1970-2019",
              subtitle = 'Top rated QB for every team for each year (e.g. Dree Brees instead of Teddy Bridgewater)', 
        caption = 'Regular Season Only | Data from: nfl.com/stats',
        y = 'Interceptions',
@@ -60,7 +60,7 @@ Plotting passing yards vs interceptions.
 ```{r Jameis Passing/Ints}
 ggplot(QBData, aes(x = Yds, y = Int)) +
   geom_point(alpha = 0.3) +
-  labs(title = "Passing Yards vs Interceptions by Quaterbacks from 1970-2019",
+  labs(title = "Passing Yards vs Interceptions by Quarterbacks from 1970-2019",
              subtitle = 'Top rated QB for every team for each year (e.g. Dree Brees instead of Teddy Bridgewater)', 
        caption = 'Regular Season Only | Data from: nfl.com/stats',
        y = 'Interceptions',
@@ -77,7 +77,7 @@ Who were the other unique players?
 ```{r Other unique QBs Passing/Ints}
 gghighlight_point(QBData, aes(x = Yds, y = Int), 
                   predicate = c(Yds >= 5400 | Int >= 30), label = Player) +
-  labs(title = "Passing Yards vs Interceptions by Quaterbacks from 1970-2019",
+  labs(title = "Passing Yards vs Interceptions by Quarterbacks from 1970-2019",
              subtitle = 'Top rated QB for every team for each year (e.g. Dree Brees instead of Teddy Bridgewater)', 
        caption = 'Regular Season Only | Data from: nfl.com/stats',
        y = 'Interceptions',

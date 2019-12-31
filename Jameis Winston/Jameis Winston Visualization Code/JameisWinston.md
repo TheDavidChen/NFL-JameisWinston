@@ -32,7 +32,7 @@ Plot TD vs Ints
 ``` r
 ggplot(QBData, aes(x = TD, y = Int)) +
   geom_point(alpha = 0.2) +
-  labs(title = "Passing TDs vs Interceptions by Quaterbacks from 1970-2019",
+  labs(title = "Passing TDs vs Interceptions by Quarterbacks from 1970-2019",
              subtitle = 'Top rated QB for every team for each year (e.g. Dree Brees instead of Teddy Bridgewater)', 
        caption = 'Regular Season only | Data from: nfl.com/stats',
        y = 'Interceptions',
@@ -44,13 +44,20 @@ ggplot(QBData, aes(x = TD, y = Int)) +
 
 ![](JameisWinston_files/figure-gfm/Jameis%20Winston%20TDs/Ints-1.png)<!-- -->
 
+``` r
+# Save the images separately
+ggsave('../../TD_Ints.png')
+```
+
+    ## Saving 7 x 5 in image
+
 Who were the other top Int/TD players?
 
 ``` r
-# Testing out gghighlight_point
+# Highlight the other unique players
 gghighlight_point(QBData, aes(x = TD, y = Int), 
                   predicate = c(TD >= 50 | Int >= 30), label = Player) +
-  labs(title = "TDs vs Interceptions by Quaterbacks from 1970-2019",
+  labs(title = "TDs vs Interceptions by Quarterbacks from 1970-2019",
              subtitle = 'Top rated QB for every team for each year (e.g. Dree Brees instead of Teddy Bridgewater)', 
        caption = 'Regular Season Only | Data from: nfl.com/stats',
        y = 'Interceptions',
@@ -65,7 +72,7 @@ Plotting passing yards vs interceptions.
 ``` r
 ggplot(QBData, aes(x = Yds, y = Int)) +
   geom_point(alpha = 0.3) +
-  labs(title = "Passing Yards vs Interceptions by Quaterbacks from 1970-2019",
+  labs(title = "Passing Yards vs Interceptions by Quarterbacks from 1970-2019",
              subtitle = 'Top rated QB for every team for each year (e.g. Dree Brees instead of Teddy Bridgewater)', 
        caption = 'Regular Season Only | Data from: nfl.com/stats',
        y = 'Interceptions',
@@ -77,12 +84,19 @@ ggplot(QBData, aes(x = Yds, y = Int)) +
 
 ![](JameisWinston_files/figure-gfm/Jameis%20Passing/Ints-1.png)<!-- -->
 
+``` r
+# Save the images separately
+ggsave('../../Yds_Ints.png')
+```
+
+    ## Saving 7 x 5 in image
+
 Who were the other unique players?
 
 ``` r
 gghighlight_point(QBData, aes(x = Yds, y = Int), 
                   predicate = c(Yds >= 5400 | Int >= 30), label = Player) +
-  labs(title = "Passing Yards vs Interceptions by Quaterbacks from 1970-2019",
+  labs(title = "Passing Yards vs Interceptions by Quarterbacks from 1970-2019",
              subtitle = 'Top rated QB for every team for each year (e.g. Dree Brees instead of Teddy Bridgewater)', 
        caption = 'Regular Season Only | Data from: nfl.com/stats',
        y = 'Interceptions',
