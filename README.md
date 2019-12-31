@@ -40,6 +40,6 @@ code can be easily adjusted.
 ![](Yds_Ints.png)
 
 From these figures, we can certainly see that it was a unique year.
-Whether or not it is sufficient to declare him an outlier is down to
+Whether or not it is sufficient to declare him an *extreme* outlier is down to
 personal judgement, but we can certainly say that he is an exciting
-player to watch. Here’s to an equally exciting 2020 season.
+player to watch. Here’s to an equally exciting 2020 season!
